@@ -5,170 +5,325 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Achadinhos</title>
   <style>
-    /* ====== IMAGEM DO PRODUTO (thumb) ====== */
-    .thumb{
-      width:100%;
-      height:170px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.20);
-      overflow:hidden;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-    .thumb img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
-    }
+    /* ============================================================
+       ✨ ESTILO "ACHADINHOS FEMININOS" (soft / loja)
+       Você pode trocar as cores em :root.
+       ============================================================ */
 
     :root{
-      --bg:#0b1020;
-      --muted:#a9b2d6;
-      --text:#eef1ff;
-      --border:rgba(255,255,255,.10);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --bg1:#fff1f7;      /* rosé bem claro */
+      --bg2:#f2f1ff;      /* lilás bem claro */
+      --card:#ffffff;
+      --text:#231f2e;
+      --muted:#6b6278;
+      --border:rgba(35,31,46,.10);
+      --shadow: 0 14px 40px rgba(35,31,46,.10);
+
+      --accent1:#ff5fa2;  /* rosa */
+      --accent2:#8b7bff;  /* lilás */
+      --accent3:#ffcd6b;  /* douradinho */
+      --chip:#fff6fb;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(1200px 700px at 15% -10%, rgba(110,168,254,.22), transparent 60%),
-        radial-gradient(900px 600px at 92% 10%, rgba(124,92,255,.18), transparent 55%),
-        var(--bg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
+      background:
+        radial-gradient(1000px 600px at 15% -10%, rgba(255,95,162,.28), transparent 60%),
+        radial-gradient(900px 500px at 85% 5%, rgba(139,123,255,.26), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height:100vh;
     }
+
+    .wrap{max-width:1120px;margin:0 auto;padding:0 16px 46px}
+
+    /* ===== topo ===== */
     header{
-      padding:28px 16px 14px;
-      max-width:1100px;
-      margin:0 auto;
+      padding:28px 0 12px;
       display:flex;
       gap:14px;
       align-items:flex-start;
       justify-content:space-between;
       flex-wrap:wrap;
     }
-    .brand h1{margin:0;font-size:26px;letter-spacing:.2px}
-    .brand p{margin:8px 0 0;color:var(--muted);max-width:720px;line-height:1.35}
-    .pill{
-      display:inline-flex; align-items:center; gap:8px;
-      border:1px solid var(--border);
-      background: rgba(255,255,255,.05);
-      padding:8px 10px;
-      border-radius:999px;
-      color: var(--muted);
-      font-size:12px;
+
+    .brand{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      max-width:780px;
     }
-    main{max-width:1100px;margin:0 auto;padding:0 16px 40px}
-    .panel{
-      background: rgba(255,255,255,.04);
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .mark{
+      width:44px;height:44px;border-radius:16px;
+      background: linear-gradient(135deg, rgba(255,95,162,.95), rgba(139,123,255,.95));
+      box-shadow: 0 12px 24px rgba(255,95,162,.18);
+      display:flex;align-items:center;justify-content:center;
+      color:white;font-weight:900;
+      letter-spacing:.5px;
+    }
+
+    h1{
+      margin:0;
+      font-size:28px;
+      letter-spacing:.2px;
+      line-height:1.1;
+    }
+
+    .subtitle{
+      margin:0;
+      color:var(--muted);
+      line-height:1.45;
+      font-size:14px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
       border:1px solid var(--border);
-      border-radius:16px;
-      padding:14px;
-      margin: 10px 0 18px;
+      background: rgba(255,255,255,.75);
+      backdrop-filter: blur(8px);
+      color:var(--muted);
+      font-size:12px;
+      box-shadow: 0 10px 26px rgba(35,31,46,.06);
+    }
+
+    /* ===== barra de filtros ===== */
+    .panel{
+      margin-top:10px;
       display:flex;
       gap:10px;
       flex-wrap:wrap;
-      align-items:center;
+      align-items:end;
       justify-content:space-between;
-    }
-    label{font-size:12px;color:var(--muted);display:block;margin:0 0 6px 2px}
-    input, select{
-      padding:11px 12px;
-      border-radius:12px;
+      background: rgba(255,255,255,.70);
       border:1px solid var(--border);
-      background: rgba(0,0,0,.25);
+      border-radius:20px;
+      padding:14px;
+      box-shadow: 0 14px 38px rgba(35,31,46,.06);
+      backdrop-filter: blur(10px);
+    }
+
+    .field{display:flex; flex-direction:column; gap:6px}
+    label{font-size:12px;color:var(--muted);padding-left:2px}
+
+    input, select{
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: #fff;
       color: var(--text);
       outline:none;
       min-width: 220px;
+      box-shadow: 0 10px 20px rgba(35,31,46,.04);
     }
+    input:focus, select:focus{
+      border-color: rgba(255,95,162,.55);
+      box-shadow: 0 0 0 4px rgba(255,95,162,.16), 0 10px 20px rgba(35,31,46,.04);
+    }
+
+    .hint{
+      font-size:12px;
+      color:var(--muted);
+      margin-left:auto;
+      align-self:center;
+      line-height:1.3;
+    }
+    .hint b{color:var(--text)}
+
+    /* ===== grid ===== */
     .grid{
+      margin-top:14px;
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap:12px;
+      gap:14px;
     }
     @media (max-width: 980px){ .grid{grid-template-columns:repeat(2,1fr)} }
     @media (max-width: 640px){
       .grid{grid-template-columns:1fr}
       input, select{width:100%}
       .panel{align-items:stretch}
+      .hint{margin-left:0;align-self:flex-start}
     }
+
+    /* ===== card ===== */
     .card{
-      background: rgba(255,255,255,.04);
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius:18px;
-      padding:14px;
+      border-radius:22px;
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      box-shadow: var(--shadow);
+      position:relative;
+    }
+
+    .thumb{
+      width:100%;
+      height:210px;
+      background: linear-gradient(135deg, rgba(255,95,162,.12), rgba(139,123,255,.12));
+      border-bottom:1px solid var(--border);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      display:block;
+      transform: scale(1.02);
+      transition: transform .25s ease;
+    }
+    .card:hover .thumb img{ transform: scale(1.06); }
+
+    .content{
+      padding:14px 14px 14px;
       display:flex;
       flex-direction:column;
       gap:10px;
-      min-height: 175px;
-      box-shadow: var(--shadow);
+      flex:1;
     }
+
     .topline{
-      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
     }
+
     .tag{
       font-size:12px;
-      padding:6px 10px;
-      border:1px solid var(--border);
+      padding:7px 10px;
       border-radius:999px;
+      border:1px solid var(--border);
+      background: var(--chip);
       color: var(--muted);
+      white-space:nowrap;
+      max-width: 65%;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
-    .title{font-size:16px;margin:0;line-height:1.25}
-    .desc{margin:0;color:var(--muted);font-size:13px;line-height:1.35}
-    .price{font-weight:800;font-size:16px}
+
+    .price{
+      font-weight:900;
+      font-size:16px;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color: transparent;
+      white-space:nowrap;
+    }
+
+    .title{
+      margin:0;
+      font-size:16px;
+      line-height:1.25;
+      letter-spacing:.1px;
+    }
+
+    .desc{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+      min-height: 34px;
+    }
+
     .actions{
       margin-top:auto;
-      display:flex; gap:10px; align-items:center; justify-content:space-between;
+      display:flex;
+      gap:10px;
+      align-items:center;
     }
+
     a.link{
       text-decoration:none;
-      color: var(--text);
-      background: rgba(110,168,254,.14);
-      border:1px solid rgba(110,168,254,.35);
-      padding:10px 12px;
-      border-radius:12px;
-      font-weight:700;
-      text-align:center;
-      flex: 1;
+      flex:1;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:12px 12px;
+      border-radius:16px;
+      font-weight:800;
+      color:white;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      box-shadow: 0 14px 30px rgba(255,95,162,.20);
+      border: 0;
+      transition: transform .12s ease, box-shadow .2s ease;
     }
-    a.link:hover{border-color:rgba(110,168,254,.7)}
+    a.link:hover{
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(255,95,162,.26);
+    }
+
+    .sparkle{
+      width:28px;height:28px;border-radius:12px;
+      display:flex;align-items:center;justify-content:center;
+      background: rgba(255,255,255,.25);
+      border:1px solid rgba(255,255,255,.35);
+    }
+
+    .empty{
+      border: 1px dashed rgba(35,31,46,.18);
+      background: rgba(255,255,255,.6);
+      box-shadow: 0 14px 34px rgba(35,31,46,.05);
+      padding:18px;
+      border-radius:22px;
+    }
+
     footer{
-      max-width:1100px;margin:0 auto;padding:0 16px 28px;color:var(--muted);
+      margin-top:18px;
+      color:var(--muted);
       font-size:12px;
+      text-align:center;
+      opacity:.95;
     }
-    .small{font-size:12px;color:var(--muted)}
   </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <h1>🛒 Achadinhos</h1>
-      <p>
-        Aqui ficam meus links organizados. Quem visita <b>só consegue visualizar e clicar</b> — não tem como adicionar/editar itens pelo site.
-      </p>
-    </div>
-    <div class="pill" title="Página somente leitura">
-      🔒 Somente leitura
-    </div>
-  </header>
-
-  <main>
-    <section class="panel">
-      <div>
-        <label for="search">Buscar</label>
-        <input id="search" placeholder="Digite para filtrar por nome/categoria..." />
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">
+          <div class="mark">♡</div>
+          <div>
+            <h1>Achadinhos</h1>
+            <p class="subtitle">Meus achados favoritos organizados por categoria. Quem visita <b>só vê e clica</b> — apenas eu publico atualizações.</p>
+          </div>
+        </div>
       </div>
-      <div>
+      <div class="pill" title="Página somente leitura">
+        🔒 Somente leitura
+      </div>
+    </header>
+
+    <section class="panel">
+      <div class="field">
+        <label for="search">Buscar</label>
+        <input id="search" placeholder="Ex.: sérum, escova, skincare..." />
+      </div>
+
+      <div class="field">
         <label for="filterCat">Categoria</label>
         <select id="filterCat">
           <option value="">Todas</option>
         </select>
       </div>
-      <div>
+
+      <div class="field">
         <label for="sort">Ordenar</label>
         <select id="sort">
           <option value="new">Mais recentes</option>
@@ -176,15 +331,18 @@
           <option value="za">Nome (Z–A)</option>
         </select>
       </div>
-      <div class="small">Para adicionar/remover itens: edite o arquivo <b>index.html</b> no GitHub e clique em “Commit changes”.</div>
+
+      <div class="hint">
+        Para adicionar itens: edite <b>index.html</b> no GitHub e clique em <b>Commit changes</b>.
+      </div>
     </section>
 
     <section class="grid" id="grid"></section>
-  </main>
 
-  <footer>
-    Dica: mantenha seus links sempre com <b>https://</b>. Se você usar link de afiliado, cole exatamente como a Amazon fornecer.
-  </footer>
+    <footer>
+      Dica: se usar link de afiliado, cole exatamente como recebeu. ✨
+    </footer>
+  </div>
 
 <script>
   // ============================================================
@@ -198,7 +356,7 @@
   //    - url: link do produto (ou link de afiliado)
   //    - image: caminho da imagem (opcional) -> exemplo: "images/foto.jpg"
   //    - price: preço (opcional)
-  //    - category: categoria (ex.: "Casa", "Eletrônicos")
+  //    - category: categoria (ex.: "Skincare", "Cabelos", "Casa")
   //    - desc: observação curta (opcional)
   //    - createdAt: data (YYYY-MM-DD). Use a data de hoje ou quando você adicionou.
   // 4) No GitHub, clique em "Commit changes" para publicar.
@@ -208,9 +366,12 @@
   // - As pessoas só vão ver os itens que você deixou aqui.
   // ============================================================
   const PRODUCTS = [
-    { name: "PDRN PINK EXOSOME SHOT SERUM 7500 30ml", url: "https://amzn.to/3Ojr7YE", image: "images/pdrn.jpg", price: "R$ 99,90", category: "Saúde", desc: "Bom para pele", createdAt: "2026-02-11" },
-    { name: "SKIN1004 - CENTELLA LIGHT CLEANSING OIL 200ML", url: "https://amzn.to/3OcsIj1", image: "", price: "R$ 29,90", category: "Beleza", desc: "Óleo de limpeza leve", createdAt: "2026-02-11" },
-    { name: "Escova Secadora Britânia Soft 4 em 1 1300W BEC07R Bivolt", url: "https://amzn.to/4aL66Pi", image: "", price: "R$ 59,90", category: "Casa", desc: "Escova secadora 4 em 1", createdAt: "2026-02-11" },
+    { name: "PDRN PINK EXOSOME SHOT SERUM 7500 30ml", url: "https://amzn.to/3Ojr7YE", image: "images/pdrn.jpg", price: "", category: "Skincare", desc: "Glow e cuidado para a pele", createdAt: "2026-02-11" },
+    { name: "SKIN1004 - CENTELLA LIGHT CLEANSING OIL 200ML", url: "https://amzn.to/3OcsIj1", image: "", price: "", category: "Skincare", desc: "Limpeza suave e confortável", createdAt: "2026-02-11" },
+    { name: "Escova Secadora Britânia Soft 4 em 1 1300W", url: "https://amzn.to/4aL66Pi", image: "", price: "", category: "Cabelos", desc: "Praticidade no dia a dia", createdAt: "2026-02-11" },
+
+    // MODELO PARA COPIAR:
+    // { name: "Nome do produto", url: "https://...", image: "images/foto.jpg", price: "R$ 0,00", category: "Categoria", desc: "Observação", createdAt: "2026-02-11" },
   ];
 
   const els = {
@@ -245,7 +406,7 @@
     const items = PRODUCTS.map(p => ({
       name: (p.name || "").trim(),
       url: (p.url || "").trim(),
-      image: (p.image || "").trim(), // ✅ CARREGA O CAMPO image (corrigido)
+      image: (p.image || "").trim(),
       price: (p.price || "").trim(),
       category: (p.category || "").trim(),
       desc: (p.desc || "").trim(),
@@ -271,21 +432,31 @@
 
     els.grid.innerHTML = filtered.map(i => `
       <article class="card">
-        ${i.image ? `<div class="thumb"><img src="${escapeHtml(i.image)}" alt="${escapeHtml(i.name)}"></div>` : ""}
-        <div class="topline">
-          <span class="tag">${escapeHtml(i.category || "Sem categoria")}</span>
-          <span class="price">${escapeHtml(i.price || "")}</span>
-        </div>
-        <h3 class="title">${escapeHtml(i.name)}</h3>
-        <p class="desc">${escapeHtml(i.desc || "")}</p>
-        <div class="actions">
-          <a class="link" href="${escapeHtml(i.url)}" target="_blank" rel="noopener">Abrir</a>
+        ${i.image ? `<div class="thumb"><img src="${escapeHtml(i.image)}" alt="${escapeHtml(i.name)}"></div>` : `<div class="thumb" aria-hidden="true"></div>`}
+        <div class="content">
+          <div class="topline">
+            <span class="tag">${escapeHtml(i.category || "Sem categoria")}</span>
+            <span class="price">${escapeHtml(i.price || "")}</span>
+          </div>
+          <h3 class="title">${escapeHtml(i.name)}</h3>
+          <p class="desc">${escapeHtml(i.desc || "")}</p>
+          <div class="actions">
+            <a class="link" href="${escapeHtml(i.url)}" target="_blank" rel="noopener">
+              <span class="sparkle">✨</span> Ver na loja
+            </a>
+          </div>
         </div>
       </article>
     `).join("");
 
     if(filtered.length === 0){
-      els.grid.innerHTML = `<div class="card"><h3 class="title">Nada encontrado</h3><p class="desc">Tente outro termo de busca ou selecione “Todas” nas categorias.</p></div>`;
+      els.grid.innerHTML = `
+        <div class="empty">
+          <h3 style="margin:0 0 6px 0;">Nada encontrado</h3>
+          <div style="color:var(--muted);font-size:13px;line-height:1.35;">
+            Tente outra busca ou selecione “Todas” nas categorias.
+          </div>
+        </div>`;
     }
   }
 
