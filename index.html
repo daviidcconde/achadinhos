@@ -5,6 +5,24 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Achadinhos</title>
   <style>
+
+    .thumb{
+  width:100%;
+  height:170px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.20);
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
     :root{
       --bg:#0b1020;
       --muted:#a9b2d6;
@@ -260,7 +278,8 @@
 
     els.grid.innerHTML = filtered.map(i => `
       <article class="card">
-        <div class="topline">
+  ${i.image ? `<div class="thumb"><img src="${escapeHtml(i.image)}" alt="${escapeHtml(i.name)}"></div>` : ""}
+  <div class="topline">
           <span class="tag">${escapeHtml(i.category || "Sem categoria")}</span>
           <span class="price">${escapeHtml(i.price || "")}</span>
         </div>
