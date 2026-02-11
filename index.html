@@ -7,10 +7,8 @@
   <style>
     :root{
       --bg:#0b1020;
-      --card:#121a33;
       --muted:#a9b2d6;
       --text:#eef1ff;
-      --accent:#6ea8fe;
       --border:rgba(255,255,255,.10);
       --shadow: 0 10px 30px rgba(0,0,0,.35);
     }
@@ -159,25 +157,50 @@
           <option value="za">Nome (Z–A)</option>
         </select>
       </div>
-      <div class="small">Para adicionar/remover itens: edite o arquivo <b>index.html</b> no GitHub e dê “Commit”.</div>
+      <div class="small">Para adicionar/remover itens: edite o arquivo <b>index.html</b> no GitHub e clique em “Commit changes”.</div>
     </section>
 
     <section class="grid" id="grid"></section>
   </main>
 
   <footer>
-    Dica: mantenha seus links sempre com <b>https://</b>. Se você usar link de afiliado, coloque exatamente como a Amazon fornecer.
+    Dica: mantenha seus links sempre com <b>https://</b>. Se você usar link de afiliado, cole exatamente como a Amazon fornecer.
   </footer>
 
 <script>
-  // ✅ LISTA PÚBLICA (SOMENTE LEITURA)
-  // Edite aqui e depois faça Commit no GitHub.
+  // ============================================================
+  // ✅ LISTA DE PRODUTOS (SOMENTE VOCÊ MUDA)
+  //
+  // COMO ADICIONAR UM NOVO ITEM:
+  // 1) Copie uma linha de produto abaixo (um bloco { ... }).
+  // 2) Cole logo abaixo do último item, antes do fechamento: ];
+  // 3) Preencha:
+  //    - name: nome do produto
+  //    - url: link do produto (ou link de afiliado)
+  //    - price: preço (opcional)
+  //    - category: categoria (ex.: "Casa", "Eletrônicos")
+  //    - desc: observação curta (opcional)
+  //    - createdAt: data (YYYY-MM-DD). Use a data de hoje ou quando você adicionou.
+  // 4) No GitHub, clique em "Commit changes" para publicar.
+  //
+  // IMPORTANTE:
+  // - Quem visita seu site NÃO consegue alterar essa lista.
+  // - As pessoas só vão ver os itens que você deixou aqui.
+  // ============================================================
   const PRODUCTS = [
     // EXEMPLOS — substitua pelos seus:
     { name: "Fone Bluetooth", url: "https://www.amazon.com.br/", price: "R$ 99,90", category: "Eletrônicos", desc: "Bom para trabalho e calls", createdAt: "2026-02-11" },
     { name: "Organizador de Cabos", url: "https://www.amazon.com.br/", price: "R$ 29,90", category: "Casa", desc: "Deixa a mesa limpa", createdAt: "2026-02-11" },
     { name: "Lâmpada Smart", url: "https://www.amazon.com.br/", price: "R$ 59,90", category: "Casa", desc: "Automação com Alexa/Google", createdAt: "2026-02-11" },
+
+    // MODELO PARA COPIAR:
+    // { name: "Nome do produto", url: "https://...", price: "R$ 0,00", category: "Categoria", desc: "Observação", createdAt: "2026-02-11" },
   ];
+
+  // ============================================================
+  // A partir daqui é o "código do site".
+  // Você não precisa mexer (a não ser que queira personalizar).
+  // ============================================================
 
   const els = {
     grid: document.getElementById("grid"),
@@ -195,8 +218,9 @@
   }
 
   function parseDate(s){
-    // espera YYYY-MM-DD
-    const m = /^\d{4}-\d{2}-\d{2}$/.test(s || "") ? s : "1970-01-01";
+    // Espera o formato YYYY-MM-DD
+    const ok = /^\d{4}-\d{2}-\d{2}$/.test(s || "");
+    const m = ok ? s : "1970-01-01";
     return new Date(m + "T00:00:00Z").getTime();
   }
 
